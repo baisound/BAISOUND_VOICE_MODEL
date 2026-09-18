@@ -1,0 +1,10 @@
+{
+  "schema": "baisound.voice-model.release-selection.v1",
+  "release": "v1",
+  "status": "NOT_DESIGNATED",
+  "sovits_checkpoint": null,
+  "gpt_checkpoint": null,
+  "evaluation_reference": null,
+  "selected_at": null,
+  "selected_by": null
+}

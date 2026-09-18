@@ -1,0 +1,54 @@
+
+name: Metadata CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout without downloading LFS binaries
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+
+      - name: Validate JSON syntax
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for p in Path(".").rglob("*.json"):
+              if ".git" in p.parts:
+                  continue
+              json.loads(p.read_text(encoding="utf-8"))
+              print("PASS", p)
+          PY
+
+      - name: Check repository policy files
+        shell: bash
+        run: |
+          test -f README.md
+          test -f LICENSE.md
+          test -f MODEL_LICENSE.md
+          test -f MODEL_CARD.md
+          test -f DATA_PROVENANCE.md
+          test -f THIRD_PARTY_NOTICES.md
+          test -f .gitattributes
+          grep -q '^\*\.pth .*filter=lfs' .gitattributes
+          grep -q '^\*\.ckpt .*filter=lfs' .gitattributes
+
+      - name: Reject accidentally committed raw audio
+        shell: bash
+        run: |
+          if find . -type f \( -name '*.wav' -o -name '*.flac' -o -name '*.mp3' -o -name '*.m4a' \) -print | grep -q .; then
+            echo "Raw audio must not be committed."
+            exit 1
+          fi

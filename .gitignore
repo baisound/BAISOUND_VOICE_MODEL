@@ -1,0 +1,107 @@
+
+# =============================================================================
+# BAISOUND Voice Model repository
+# Keep model checkpoints in Git LFS; keep training/private data OUT of Git.
+# =============================================================================
+
+# OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.token
+secrets/
+private/
+
+# Raw/private voice data — NEVER commit by default
+*.wav
+*.flac
+*.mp3
+*.m4a
+*.aac
+*.ogg
+*.opus
+*.webm
+raw/
+audio/
+recordings/
+datasets/
+dataset/
+training_data/
+private_data/
+
+# Transcripts / intermediate training artifacts that may contain private text
+logs/
+runs/
+tmp/
+temp/
+cache/
+outputs/
+features/
+preprocessed/
+preprocess/
+2-name2text.txt
+6-name2semantic.tsv
+*.npy
+*.npz
+*.pt.tmp
+*.pth.tmp
+*.ckpt.tmp
+
+# GPT-SoVITS working tree artifacts — do not vendor upstream clone here
+GPT-SoVITS/
+GPT_SoVITS/
+pretrained_models/
+SoVITS_weights/
+GPT_weights/
+SoVITS_weights_v2/
+GPT_weights_v2/
+SoVITS_weights_v2Pro/
+GPT_weights_v2Pro/
+
+# ASR models
+BAI-large-v3/
+faster-whisper*/
+whisper*/
+model.bin
+
+# Archives / transfers
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.part*
+*.download
+
+# Local generated manifests before verification
+manifests/*.local.json
+manifests/*.tmp.json
+
+# Keep placeholders
+!models/**/.gitkeep
