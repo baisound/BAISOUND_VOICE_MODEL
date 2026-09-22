@@ -55,9 +55,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 
-repo = Path("/path/to/BAISOUND_VOICE_MODEL").resolve()
+repo = Path(os.environ["BAISOUND_VOICE_MODEL_ROOT"]).expanduser().resolve()
 profile = json.loads((repo / "profiles/stable.json").read_text(encoding="utf-8"))
 
 
@@ -107,15 +108,16 @@ python api_v2.py -a 127.0.0.1 -p 9880 -c GPT_SoVITS/configs/tts_infer.yaml
 次は、モデルを切り替えて日本語WAVを取得する最小構成例です。`reference.wav`と`prompt_text`は、同じ音声内容に一致させてください。
 
 ```python
+import os
 from pathlib import Path
 
 import requests
 
 base_url = "http://127.0.0.1:9880"
-model_repo = Path("/path/to/BAISOUND_VOICE_MODEL").resolve()
+model_repo = Path(os.environ["BAISOUND_VOICE_MODEL_ROOT"]).expanduser().resolve()
 gpt = model_repo / "models/stable/v2/baisound-voice-v2-gpt.ckpt"
 sovits = model_repo / "models/stable/v2/baisound-voice-v2-sovits.pth"
-reference = Path("/authorized/audio/reference.wav").resolve()
+reference = Path(os.environ["BAISOUND_REFERENCE_WAV"]).expanduser().resolve()
 
 for endpoint, model in (
     ("set_gpt_weights", gpt),

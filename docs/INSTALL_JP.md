@@ -13,21 +13,23 @@ clone後にLFS objectを取得し、ローカルRuntime用ディレクトリへ�
 
 ```bash
 git lfs pull
-bash install/wsl/install-model.sh /path/to/model-directory stable
+export BAISOUND_MODEL_DESTINATION="${BAISOUND_MODEL_DESTINATION:?set BAISOUND_MODEL_DESTINATION}"
+bash install/wsl/install-model.sh "$BAISOUND_MODEL_DESTINATION" stable
 ```
 
 Experimental profileを明示的に使う場合:
 
 ```bash
-bash install/wsl/install-model.sh /path/to/model-directory signature-preview
+bash install/wsl/install-model.sh "$BAISOUND_MODEL_DESTINATION" signature-preview
 ```
 
 ## Windows PowerShell
 
 ```powershell
 git lfs pull
+if (-not $env:BAISOUND_MODEL_DESTINATION) { throw "Set BAISOUND_MODEL_DESTINATION" }
 powershell -ExecutionPolicy Bypass -File .\install\windows\Install-Model.ps1 `
-  -Destination C:\Models\BAISOUND `
+  -Destination $env:BAISOUND_MODEL_DESTINATION `
   -Profile stable
 ```
 
