@@ -1,11 +1,10 @@
-
 cff-version: 1.2.0
 message: "If you use an authorized release of this model, cite the corresponding repository release."
-title: "BAISOUND Voice Model V1"
+title: "BAISOUND Voice Model"
 type: software
 authors:
   - name: "BAISOUND"
-version: "0.0.0"
-date-released: "2026-09-19"
+version: "2.0.0"
+date-released: "2026-09-22"
 license: "LicenseRef-Proprietary"
-repository-code: "https://github.com/REPLACE_OWNER/REPLACE_REPOSITORY"
+repository-code: "https://github.com/baisound/BAISOUND_VOICE_MODEL"

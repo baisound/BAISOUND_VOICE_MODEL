@@ -1,0 +1,4 @@
+evidence_path,artifact_role,declared_sha256,wsl_sha256,match,notes
+"FINE_TUNING/TASK097_V2_FINAL_PRETEST_FREEZE_20260920.json","stable_sovits","76a492931f97cd349c6d7d6f04bab4f2442fa9890a5a40708a1d49f919f8e0ff","76a492931f97cd349c6d7d6f04bab4f2442fa9890a5a40708a1d49f919f8e0ff","YES","metadata evidence only; no duplicate weight binary found"
+"FINE_TUNING/TASK097_V2_FINAL_PRETEST_FREEZE_20260920.json","stable_gpt","4dd990db49d56bdaff6c4988635c46b58f73e1d719297570f0d361184fd60745","4dd990db49d56bdaff6c4988635c46b58f73e1d719297570f0d361184fd60745","YES","metadata evidence only; no duplicate weight binary found"
+"FINE_TUNING/TASK097_V2_FINAL_PRETEST_FREEZE_20260920.json","signature_preview_sovits","19830cc736786cb023f7d8a913ab0ba9c1485af8b5a54f8d90784c8542f6a943","19830cc736786cb023f7d8a913ab0ba9c1485af8b5a54f8d90784c8542f6a943","YES","metadata evidence only; no duplicate weight binary found"

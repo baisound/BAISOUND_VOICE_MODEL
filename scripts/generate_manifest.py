@@ -1,47 +1,33 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+
 import hashlib
 import json
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_DIRS = [
-    ("sovits", ROOT / "models" / "candidates" / "sovits", ".pth"),
-    ("gpt", ROOT / "models" / "candidates" / "gpt", ".ckpt"),
-]
+REGISTRY_PATH = ROOT / "manifests" / "model-registry.json"
+
 
 def sha256_file(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
-items = []
-for family, folder, suffix in MODEL_DIRS:
-    for path in sorted(folder.glob(f"*{suffix}")):
-        items.append({
-            "family": family,
-            "file": path.relative_to(ROOT).as_posix(),
-            "bytes": path.stat().st_size,
-            "sha256": sha256_file(path),
-        })
 
-if not items:
-    raise SystemExit("ERROR: no checkpoints found. Run import_task097_checkpoints.sh first.")
+registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+for model in registry["models"]:
+    path = ROOT / model["path"]
+    if not path.is_file():
+        raise SystemExit(f"ERROR: missing model: {model['path']}")
+    model["bytes"] = path.stat().st_size
+    model["sha256"] = sha256_file(path)
 
-manifest = {
-    "schema": "baisound.voice-model.checkpoint-manifest.v1",
-    "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-    "project": "BAISOUND",
-    "task": "TASK-097",
-    "engine": "GPT-SoVITS v2Pro",
-    "checkpoint_count": len(items),
-    "checkpoints": items,
-}
-
-out = ROOT / "manifests" / "checkpoints.json"
-out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-print(f"WROTE: {out}")
-print(f"CHECKPOINTS: {len(items)}")
+registry["generated_at_utc"] = datetime.now(timezone.utc).isoformat()
+REGISTRY_PATH.write_text(
+    json.dumps(registry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+)
+print(f"WROTE: {REGISTRY_PATH}")

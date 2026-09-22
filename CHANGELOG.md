@@ -1,18 +1,28 @@
-
 # Changelog
 
 All notable BAISOUND Voice Model repository changes are recorded here.
 
-## [Unreleased]
+## [2.0.0] - 2026-09-22
 
 ### Added
 
-- repository structure for TASK-097 GPT-SoVITS v2Pro candidate checkpoints;
-- Git LFS policy;
-- model/data provenance documents;
-- checkpoint manifest generation and verification scripts.
+- stable GPT-SoVITS v2Pro SoVITS and GPT model pair;
+- experimental signature-preview SoVITS model profile;
+- release profiles, model registry, release manifest, checksums, and install documentation;
+- WSL source inventory and public-release mapping evidence.
+
+### Changed
+
+- renamed all preserved v1 candidates to public, descriptive filenames;
+- reorganized candidates, stable releases, and experimental models by channel;
+- replaced machine-specific import instructions with generic source-path inputs;
+- updated repository verification for LFS, privacy, manifests, profiles, and public naming.
+
+### Security
+
+- confirmed that private audio, hidden evaluation data, environments, caches, logs, and upstream source are not included.
 
 ## [0.0.0] - 2026-09-19
 
-- Initial repository bootstrap only.
-- No final BAISOUND Voice Model V1 checkpoint pair designated.
+- Initial repository bootstrap.
+- Seven v1 candidate checkpoints preserved.

@@ -1,0 +1,16 @@
+{
+  "schema": "baisound.voice-model.repository-layout.v2",
+  "model_id": "baisound-voice",
+  "latest_stable_release": "2.0.0",
+  "channels": {
+    "stable": "models/stable/v2",
+    "candidates": "models/candidates/v1",
+    "experimental": "models/experimental/signature-preview-v2"
+  },
+  "profiles": {
+    "stable": "profiles/stable.json",
+    "signature_preview": "profiles/signature-preview.json"
+  },
+  "git_lfs_required": true,
+  "raw_audio_allowed": false
+}

@@ -1,57 +1,36 @@
-
-# Model Card — BAISOUND Voice Model V1 Candidates
+# Model Card — BAISOUND Voice Model
 
 ## Model details
 
-- Project: BAISOUND
-- Training task: TASK-097
+- Model ID: `baisound-voice`
+- Stable release: `2.0.0`
 - Architecture family: GPT-SoVITS
-- Training line: v2Pro
-- Status: candidate checkpoint set
-- Final release pair: NOT YET DESIGNATED
-
-## Candidate checkpoints
-
-### SoVITS
-
-- `BAISOUND_TASK097_V1_e2_s100.pth`
-- `BAISOUND_TASK097_V1_e4_s200.pth`
-- `BAISOUND_TASK097_V1_e6_s300.pth`
-- `BAISOUND_TASK097_V1_e8_s400.pth`
-
-### GPT
-
-- `BAISOUND_TASK097_V1-e5.ckpt`
-- `BAISOUND_TASK097_V1-e10.ckpt`
-- `BAISOUND_TASK097_V1-e15.ckpt`
-
-The current evaluation space therefore contains 12 possible SoVITS/GPT pairings.
+- Engine line: v2Pro
+- Stable components: one SoVITS checkpoint and one GPT checkpoint
+- Distribution format: Git LFS managed `.pth` and `.ckpt`
 
 ## Intended use
 
-BAISOUND voice synthesis and project-internal evaluation.
+The stable profile is intended for BAISOUND voice synthesis in compatible GPT-SoVITS v2Pro runtimes. The experimental signature-preview profile is provided separately and is not the default general-synthesis recommendation.
 
-## Non-goals
+## Selection status
 
-- This repository is not an ASR/Whisper model repository.
-- The checkpoints are not intended to be loaded as `faster-whisper` models.
-- Raw private voice data is not distributed here.
+The stable pair promotes an existing, owner-approved model identity. Repository modernization did not rerun evaluation or select a different checkpoint pair.
 
-## Evaluation status
+Public-safe evaluation summary:
 
-A final V1 pair must be selected through comparative evaluation before a release tag is
-created. Record the selection in:
-
-```text
-models/release/v1/selection.json
-```
+- the stable pair was frozen before final testing;
+- final testing did not cause model reselection;
+- private prompts, audio, mappings, and owner-only notes are intentionally excluded.
 
 ## Limitations
 
-Model quality may vary by sentence length, prosody, vocabulary, emotion, speaking
-tempo, and reference audio. A checkpoint filename alone is not evidence that it is the
-best release candidate.
+Quality can vary with sentence length, prosody, vocabulary, emotion, speaking rate, reference audio, and runtime parameters. A model filename alone does not prove suitability for a particular use case.
 
-## Provenance
+## Privacy and provenance
 
-See `DATA_PROVENANCE.md` and `manifests/`.
+Raw voice recordings, private transcripts, training datasets, hidden evaluation audio, and blind-review mappings are not distributed here. See `DATA_PROVENANCE.md` and `manifests/training-basis.json`.
+
+## License
+
+See `MODEL_LICENSE.md`. No open redistribution grant should be inferred from repository access.

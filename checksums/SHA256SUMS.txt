@@ -1,0 +1,10 @@
+76a492931f97cd349c6d7d6f04bab4f2442fa9890a5a40708a1d49f919f8e0ff  models/stable/v2/baisound-voice-v2-sovits.pth
+4dd990db49d56bdaff6c4988635c46b58f73e1d719297570f0d361184fd60745  models/stable/v2/baisound-voice-v2-gpt.ckpt
+19830cc736786cb023f7d8a913ab0ba9c1485af8b5a54f8d90784c8542f6a943  models/experimental/signature-preview-v2/baisound-voice-v2-signature-preview-sovits.pth
+8ec7a56c3ec00c62b05d6558dd425a23478acf278f3724cb90c1863f69d89721  models/candidates/v1/sovits/baisound-voice-v1-sovits-epoch02-step0100.pth
+107f8bd79e23dceb301ccf50e2114e4880c84c092bc7fe117aa3d1bdc0c1033d  models/candidates/v1/sovits/baisound-voice-v1-sovits-epoch04-step0200.pth
+d5529d4ede88d35ad98193a4c7e7358a3454b0d908ad613d7ce19e7343e09137  models/candidates/v1/sovits/baisound-voice-v1-sovits-epoch06-step0300.pth
+cc040cea1c5765620f464388d75809047f7f29087fff639c8f423b448447ad5d  models/candidates/v1/sovits/baisound-voice-v1-sovits-epoch08-step0400.pth
+aa2377f760971e4aeaead7d5319693a8ea8725b6e3121273d1a546ac7f30e669  models/candidates/v1/gpt/baisound-voice-v1-gpt-epoch05.ckpt
+16943e46220179da1de4c1df0b71eb82729c04d54c9594065405d6b6c1259998  models/candidates/v1/gpt/baisound-voice-v1-gpt-epoch10.ckpt
+a421ba90c243b9c1745526310ec52da47b4c08ccab4ba7abb9a5a7fb807759aa  models/candidates/v1/gpt/baisound-voice-v1-gpt-epoch15.ckpt

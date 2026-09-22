@@ -1,24 +1,25 @@
 {
-  "schema": "baisound.voice-model.training-basis.v1",
+  "schema": "baisound.voice-model.training-basis.v2",
   "project": "BAISOUND",
-  "task": "TASK-097",
   "engine_family": "GPT-SoVITS",
   "engine_line": "v2Pro",
   "upstream_source": {
     "repository": "https://github.com/RVC-Boss/GPT-SoVITS",
     "license": "MIT",
-    "commit": "RECORD_EXACT_TRAINING_COMMIT"
+    "commit": "48b1a0169a28582a8984402f82cf438d3bfa6aca"
   },
   "upstream_pretrained_models": {
     "repository": "https://huggingface.co/lj1995/GPT-SoVITS",
     "license_observed": "MIT",
-    "exact_revision": "RECORD_EXACT_REVISION",
-    "files": []
+    "exact_revision": null,
+    "redistributed_in_this_repository": false
   },
   "dataset": {
     "approved_count": 206,
     "approved_seconds": 1965.79,
-    "raw_audio_in_repository": false
+    "raw_audio_in_repository": false,
+    "private_transcripts_in_repository": false,
+    "hidden_evaluation_in_repository": false
   },
-  "final_pair_designated": false
+  "stable_release": "2.0.0"
 }

@@ -20,8 +20,9 @@ Model repository:
 - v2Pro directory: https://huggingface.co/lj1995/GPT-SoVITS/tree/main/v2Pro
 - Current repository metadata identifies the model repository as MIT.
 
-The exact base files/revisions used by TASK-097 should be recorded in
-`manifests/training-basis.json` when available.
+The pinned upstream source commit and known dependency status are recorded in
+`manifests/training-basis.json`. Third-party pretrained model bytes are not redistributed
+from this repository.
 
 ## Important
 

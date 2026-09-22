@@ -1,0 +1,8 @@
+{
+  "schema": "baisound.voice-model.candidate-collection.v1",
+  "collection": "v1",
+  "status": "PRESERVED_NOT_DESIGNATED_AS_STABLE",
+  "sovits_candidates": 4,
+  "gpt_candidates": 3,
+  "note": "Candidate bytes are preserved under descriptive public filenames."
+}

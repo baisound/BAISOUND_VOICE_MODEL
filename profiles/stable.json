@@ -1,0 +1,24 @@
+{
+  "schema": "baisound.voice-model.profile.v1",
+  "model_id": "baisound-voice",
+  "channel": "stable",
+  "release_version": "2.0.0",
+  "engine": "GPT-SoVITS",
+  "engine_family": "v2Pro",
+  "models": {
+    "sovits": {
+      "path": "models/stable/v2/baisound-voice-v2-sovits.pth",
+      "sha256": "76a492931f97cd349c6d7d6f04bab4f2442fa9890a5a40708a1d49f919f8e0ff"
+    },
+    "gpt": {
+      "path": "models/stable/v2/baisound-voice-v2-gpt.ckpt",
+      "sha256": "4dd990db49d56bdaff6c4988635c46b58f73e1d719297570f0d361184fd60745"
+    }
+  },
+  "provenance": {
+    "source_artifact_names": [
+      "BAISOUND_TASK097_V2_FRESH_e4_s192.pth",
+      "BAISOUND_TASK097_V2_FRESH-e15.ckpt"
+    ]
+  }
+}

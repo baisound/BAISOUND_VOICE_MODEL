@@ -1,41 +1,22 @@
-
 # Data Provenance
 
-## TASK-097 first fine-tuning run
+## Public-safe summary
 
-The first TASK-097 training dataset was built from an owner-reviewed canonical approved
-subset.
+The BAISOUND models were fine-tuned from an owner-reviewed voice dataset. The initial approved subset contained 206 clips totaling 1,965.79 seconds.
 
-Known canonical scope:
-
-- approved clips: 206
-- approved duration: 1965.79 seconds
-- approved duration: approximately 00:32:45.790
-
-The raw/private audio and transcripts are intentionally not stored in this model
-repository.
+The current stable v2 pair was promoted from an already approved model identity. The repository modernization process did not retrain or reselect the model.
 
 ## Repository boundary
 
-Allowed provenance artifacts:
+Allowed provenance records include public model hashes, public filenames, source artifact names, counts and durations, engine revisions, and public-safe evaluation summaries.
 
-- public-safe or private-safe canonical manifest identifiers;
-- source/checkpoint SHA-256 hashes;
-- counts and durations;
-- training configuration;
-- evaluation summaries;
-- upstream model revision identifiers.
+The following remain outside this repository:
 
-Excluded by default:
+- raw and reference voice audio;
+- private transcripts or corrections;
+- training, validation, and hidden test datasets;
+- blind-review mappings and private pair keys;
+- feature caches, embeddings, logs, and crash dumps;
+- credentials and unnecessary machine-local paths.
 
-- raw WAV;
-- private transcripts;
-- correction text containing private content;
-- full feature caches;
-- speaker embeddings unless specifically approved;
-- secrets and local paths that are not needed for reproducibility.
-
-## Future runs
-
-Each additional fine-tuning run should receive a new immutable run ID and a separate
-manifest under `manifests/runs/`.
+Source artifact names are retained only as provenance metadata in manifests and profiles. They are not used as public model filenames.

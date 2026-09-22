@@ -16,15 +16,7 @@ if [ ! -d .git ]; then
 fi
 
 git lfs install --local
-
-# .gitattributes is canonical; these calls also verify Git LFS is operational.
 git lfs track "*.pth" "*.ckpt" "*.safetensors" "*.onnx" "*.bin" >/dev/null
 
-echo
-echo "Repository initialized:"
-echo "  $ROOT"
-echo
-echo "Next:"
-echo "  bash scripts/import_task097_checkpoints.sh"
-echo "  python3 scripts/generate_manifest.py"
-echo "  bash scripts/verify_repository.sh"
+echo "Repository initialized: $ROOT"
+echo "Next: hydrate LFS objects and run bash scripts/verify_repository.sh"

@@ -1,142 +1,84 @@
+# BAISOUND Voice Model
 
-# BAISOUND Voice Model V1
+BAISOUND向けにファインチューニングされたGPT-SoVITSモデルを、一般利用向けの名前・バージョン・チェックサムとともに管理する配布リポジトリです。
 
-BAISOUND向け GPT-SoVITS v2Pro ファインチューニング成果物を、学習用作業ツリーから分離して管理するためのモデル・リポジトリです。
+## Latest stable release
 
-## Repository status
+Stable release: **v2.0.0**
 
-- Fine-tuning run: `TASK-097`
-- Engine family: GPT-SoVITS v2Pro
-- Current state: **candidate checkpoints preserved / final V1 pair not yet designated**
-- Raw voice/audio dataset: **NOT stored in this repository**
-- Upstream GPT-SoVITS source tree: **NOT vendored in this repository**
-- Large model files: **Git LFS**
+| Component | File | Bytes | SHA-256 |
+|---|---|---:|---|
+| SoVITS | `models/stable/v2/baisound-voice-v2-sovits.pth` | 134,946,675 | `76a492931f97cd349c6d7d6f04bab4f2442fa9890a5a40708a1d49f919f8e0ff` |
+| GPT | `models/stable/v2/baisound-voice-v2-gpt.ckpt` | 155,312,966 | `4dd990db49d56bdaff6c4988635c46b58f73e1d719297570f0d361184fd60745` |
 
-## Why this repository starts here
+Engine compatibility: **GPT-SoVITS v2Pro**. The upstream source tree and pretrained dependencies are not vendored here.
 
-このリポジトリのGit管理ルートは、既存の
+Machine-readable entry points:
 
-```text
-/home/baisound/BAI_AI/task097_gptsovits/GPT-SoVITS/
-```
+- `profiles/stable.json`
+- `manifests/model-registry.json`
+- `manifests/releases/v2.0.0.json`
+- `checksums/SHA256SUMS.txt`
 
-ではありません。
+## Experimental profile
 
-既存フォルダはGPT-SoVITS本体の作業ツリーなので、その上から別Gitを被せると、上流ソース、仮想環境、pretrained model、training log、private datasetまで混入しやすくなります。
+`profiles/signature-preview.json` is an experimental profile. It combines the stable GPT component with:
 
-推奨Gitルート:
+`models/experimental/signature-preview-v2/baisound-voice-v2-signature-preview-sovits.pth`
 
-```text
-/home/baisound/BAI_AI/BAISOUND_VOICE_MODEL_V1/
-```
+This preview is not the general-purpose stable recommendation. Exact greeting playback and routing policy belong to `baisound-tts-runtime`, not to this model repository.
 
-元チェックポイントは以下から取り込みます。
+## Preserved v1 candidates
 
-```text
-/home/baisound/BAI_AI/task097_gptsovits/GPT-SoVITS/SoVITS_weights_v2Pro/
-/home/baisound/BAI_AI/task097_gptsovits/GPT-SoVITS/GPT_weights_v2Pro/
-```
-
-## Candidate checkpoint layout
+The seven previously published v1 candidate checkpoints remain under:
 
 ```text
-models/
-  candidates/
-    sovits/
-      BAISOUND_TASK097_V1_e2_s100.pth
-      BAISOUND_TASK097_V1_e4_s200.pth
-      BAISOUND_TASK097_V1_e6_s300.pth
-      BAISOUND_TASK097_V1_e8_s400.pth
-    gpt/
-      BAISOUND_TASK097_V1-e5.ckpt
-      BAISOUND_TASK097_V1-e10.ckpt
-      BAISOUND_TASK097_V1-e15.ckpt
-  release/
-    v1/
-      selection.json
+models/candidates/v1/
+├─ sovits/
+└─ gpt/
 ```
 
-`models/release/v1/` にモデルバイナリを重複コピーしません。正式採用後は `selection.json` から採用候補を参照します。
+They were renamed in Git history with `git mv`; their bytes and LFS object identities are unchanged.
 
-## Initial setup
+## Quick start
 
-スターターパックを次の場所へ展開します。
+Install Git LFS before cloning, then hydrate the model objects:
 
 ```bash
-mkdir -p /home/baisound/BAI_AI/BAISOUND_VOICE_MODEL_V1
-cd /home/baisound/BAI_AI/BAISOUND_VOICE_MODEL_V1
-```
-
-その後:
-
-```bash
-bash scripts/init_repository.sh
-bash scripts/import_task097_checkpoints.sh
-python3 scripts/generate_manifest.py
+git lfs install
+git clone https://github.com/baisound/BAISOUND_VOICE_MODEL.git
+cd BAISOUND_VOICE_MODEL
+git lfs pull
 bash scripts/verify_repository.sh
 ```
 
-確認後:
+See:
 
-```bash
-git status
-git add .
-git commit -m "chore: initialize BAISOUND Voice Model V1 repository"
-```
+- `docs/QUICK_START_JP.md`
+- `docs/INSTALL_JP.md`
+- `docs/COMPATIBILITY.md`
+- `docs/VERSIONING.md`
+- `docs/TROUBLESHOOTING.md`
 
-GitHubに空のPrivate repositoryを作った後:
+## Repository boundary
 
-```bash
-git remote add origin git@github.com:<OWNER>/<REPOSITORY>.git
-git push -u origin main
-```
+This repository contains approved public model weights, public-safe manifests, profiles, checksums, and helper scripts. It intentionally excludes:
 
-HTTPSを使う場合はremote URLだけ置き換えてください。
+- raw or reference voice audio;
+- private training, validation, and test data;
+- private transcripts and blind-review mappings;
+- GPT-SoVITS source code and pretrained dependencies;
+- Conda/Python environments, caches, logs, and generated WAV files;
+- TTS server, queue, playback, and product integration code.
 
 ## Git LFS
 
-`.pth` / `.ckpt` / `.safetensors` / `.onnx` / `.bin` は `.gitattributes` でGit LFS対象です。
-
-確認:
+Model binaries are managed by Git LFS. Verify with:
 
 ```bash
 git lfs ls-files
 ```
 
-モデルファイルが通常Git objectとして追加されていないか、push前に必ず `scripts/verify_repository.sh` を通してください。
-
-## Privacy
-
-このrepositoryには原則として次を入れません。
-
-- raw WAV
-- BAI Voice Captureの録音本体
-- private transcript
-- private training dataset
-- Whisper/ASR model
-- GPT-SoVITS pretrained model
-- virtualenv / cache / feature files
-- secrets / tokens
-
-Dataset provenanceは `DATA_PROVENANCE.md` と安全なmanifest/digestだけで管理します。
-
 ## Licensing
 
-`LICENSE.md` はBAISOUND固有のrepository contentに対するデフォルト方針です。
-モデル重みについては `MODEL_LICENSE.md` を参照してください。
-GPT-SoVITSおよびpretrained componentsの情報は `THIRD_PARTY_NOTICES.md` に分離しています。
-
-この初期状態では、モデル重みの公開再配布権を自動的には付与していません。Public repositoryへ変更する前にライセンス方針を明示的に確定してください。
-
-## Files
-
-- `MODEL_CARD.md` — model card
-- `DATA_PROVENANCE.md` — training-data provenance boundary
-- `MODEL_LICENSE.md` — weights licensing status
-- `THIRD_PARTY_NOTICES.md` — upstream notices
-- `SECURITY.md` — security/reporting
-- `CONTRIBUTING.md` — contribution policy
-- `CHANGELOG.md` — release history
-- `CITATION.cff` — citation metadata
-- `manifests/` — hashes and checkpoint inventory
-- `scripts/` — import / hash / verify / release-selection helpers
+Repository content and model weights are not automatically granted an open-source or public-redistribution license. Read `LICENSE.md`, `MODEL_LICENSE.md`, and `THIRD_PARTY_NOTICES.md` before use or redistribution.
