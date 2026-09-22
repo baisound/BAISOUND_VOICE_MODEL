@@ -1,5 +1,7 @@
 # クイックスタート
 
+このページはモデルの取得と検証だけを短くまとめています。初めての方は[初心者向け利用ガイド](BEGINNER_GUIDE_JP.md)、RuntimeやAPIへ組み込む方は[開発者向け統合ガイド](DEVELOPER_GUIDE_JP.md)を先に確認してください。
+
 ## 1. 取得
 
 Git LFSを有効化してリポジトリをcloneします。
@@ -28,3 +30,5 @@ models/stable/v2/baisound-voice-v2-gpt.ckpt
 ```
 
 GPT-SoVITS v2Pro互換Runtimeで上記2ファイルを指定します。Runtime本体、pretrained model、Python環境はこのリポジトリに含まれません。
+
+音声生成には、利用許諾のある参照音声と、その内容に一致する正確な文字起こしも必要です。

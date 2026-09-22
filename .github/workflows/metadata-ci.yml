@@ -40,12 +40,16 @@ jobs:
           test -f MODEL_CARD.md
           test -f DATA_PROVENANCE.md
           test -f THIRD_PARTY_NOTICES.md
+          test -f docs/BEGINNER_GUIDE_JP.md
+          test -f docs/DEVELOPER_GUIDE_JP.md
           test -f profiles/stable.json
           test -f manifests/model-registry.json
           test -f manifests/releases/v2.0.0.json
           test -f checksums/SHA256SUMS.txt
           grep -q '^\*\.pth .*filter=lfs' .gitattributes
           grep -q '^\*\.ckpt .*filter=lfs' .gitattributes
+          grep -q 'docs/BEGINNER_GUIDE_JP.md' README.md
+          grep -q 'docs/DEVELOPER_GUIDE_JP.md' README.md
 
       - name: Check public model paths
         shell: bash

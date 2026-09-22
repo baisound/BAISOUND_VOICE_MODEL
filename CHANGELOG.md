@@ -2,6 +2,14 @@
 
 All notable BAISOUND Voice Model repository changes are recorded here.
 
+## [Unreleased]
+
+### Documentation
+
+- expanded the README with a product overview and software-integration map;
+- added separate Japanese guides for first-time users and developers;
+- documented GPT-SoVITS WebUI, local API, video, streaming, Stream Deck, and game integration boundaries.
+
 ## [2.0.0] - 2026-09-22
 
 ### Added
