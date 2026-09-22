@@ -16,8 +16,12 @@ by their own license terms. See `THIRD_PARTY_NOTICES.md`.
 
 Model-weight licensing is described separately in `MODEL_LICENSE.md`.
 
-This repository intentionally does not adopt an open-source license for the BAISOUND
-fine-tuned weights by default. If the repository is later made public, replace or amend
-this file only after the intended distribution rights have been explicitly decided.
+Any separately authorized use of the model or generated audio is also subject to
+`docs/USAGE_POLICY_JP.md`, including the mandatory YouTube description credit and
+the prohibited-use rules.
+
+This repository is publicly visible, but it intentionally does not adopt an open-source
+license for the BAISOUND fine-tuned weights. Public visibility and technical download
+access are not a grant of model-use or redistribution rights.
 
 This file is a project licensing notice, not legal advice.

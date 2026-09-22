@@ -46,6 +46,8 @@ private/
 *.ogg
 *.opus
 *.webm
+# Explicit exception: owner-approved public demo audio
+!samples/public/*.wav
 raw/
 audio/
 recordings/
@@ -105,3 +107,6 @@ manifests/*.tmp.json
 
 # Keep placeholders
 !models/**/.gitkeep
+
+# Windows example local settings
+examples/windows/BAISOUND-API-SETTINGS.local.ps1

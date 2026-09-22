@@ -13,6 +13,16 @@
 
 The stable profile is intended for BAISOUND voice synthesis in compatible GPT-SoVITS v2Pro runtimes. The experimental signature-preview profile is provided separately and is not the default general-synthesis recommendation.
 
+Use is limited to separately authorized users and is subject to `MODEL_LICENSE.md` and `docs/USAGE_POLICY_JP.md`. YouTube use requires the specified credit in every applicable video description.
+
+## Public demo
+
+An owner-approved Stable v2.0.0 narration sample and its public-safe generation metadata are available under `samples/public/`. The demo contains generated audio only; reference and training audio remain excluded.
+
+## Prohibited misuse
+
+Impersonation, deception, fraud, defamation, harassment, illegal activity, rights infringement, unauthorized redistribution, and removal of required attribution are prohibited. See `docs/USAGE_POLICY_JP.md` for the complete rules and enforcement policy.
+
 ## Selection status
 
 The stable pair promotes an existing, owner-approved model identity. Repository modernization did not rerun evaluation or select a different checkpoint pair.

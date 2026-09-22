@@ -87,6 +87,8 @@ WindowsでPython 3.8以前を使用する場合は、`Path.is_relative_to()`相�
 
 ## 3. GPT-SoVITSへロードする
 
+Windowsで公式`api_v2.py`を起動し、PowerShellクライアントからWAVを取得する実行例は[Windows向け起動例・APIクライアント](../examples/windows/README_JP.md)にあります。
+
 ### WebUIを使う場合
 
 1. [GPT-SoVITS公式リポジトリ](https://github.com/RVC-Boss/GPT-SoVITS)の手順でRuntimeとv2Pro用pretrained modelを用意します。
@@ -205,6 +207,9 @@ Stable統合では`profiles/stable.json`を正本にします。`profiles/signat
 - [Release manifest](../manifests/releases/v2.0.0.json)
 - [GPT-SoVITS公式リポジトリ](https://github.com/RVC-Boss/GPT-SoVITS)
 - [GPT-SoVITS公式`api_v2.py`](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/api_v2.py)
+- [Windows向け起動例・APIクライアント](../examples/windows/README_JP.md)
+- [利用・悪用防止ガイドライン](USAGE_POLICY_JP.md)
+- [公開ナレーションサンプル](../samples/README.md)
 
 ## ライセンス境界
 

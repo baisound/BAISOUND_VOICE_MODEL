@@ -45,11 +45,24 @@ fi
 
 echo
 echo "== Forbidden private/runtime files =="
-if find . -path './.git' -prune -o -type f \( -iname '*.wav' -o -iname '*.flac' -o -iname '*.mp3' -o -iname '*.m4a' -o -iname '*.pem' -o -iname '*.key' \) -print | grep -q .; then
-  echo "FAIL: forbidden audio or credential file found"
+approved_audio='./samples/public/baisound-narration-sample-v2.wav'
+unexpected_audio="$(
+  find . -path './.git' -prune -o -type f \
+    \( -iname '*.wav' -o -iname '*.flac' -o -iname '*.mp3' -o -iname '*.m4a' \) \
+    -print | grep -Fvx "$approved_audio" || true
+)"
+if [ -n "$unexpected_audio" ]; then
+  echo "FAIL: unapproved audio file found"
+  printf '%s\n' "$unexpected_audio"
   fail=1
 else
-  echo "PASS: no forbidden audio or credential files"
+  echo "PASS: only the owner-approved public sample is present"
+fi
+if find . -path './.git' -prune -o -type f \( -iname '*.pem' -o -iname '*.key' \) -print | grep -q .; then
+  echo "FAIL: credential file found"
+  fail=1
+else
+  echo "PASS: no credential files"
 fi
 
 echo
@@ -62,6 +75,12 @@ for ext in pth ckpt safetensors; do
     fail=1
   fi
 done
+if grep -q '^samples/public/\*\.wav .*filter=lfs' .gitattributes; then
+  echo "PASS: public WAV LFS policy"
+else
+  echo "FAIL: public WAV LFS policy missing"
+  fail=1
+fi
 while IFS= read -r file; do
   [ -z "$file" ] && continue
   attr="$(git check-attr filter -- "$file" | awk -F': ' '{print $3}')"
@@ -71,13 +90,17 @@ while IFS= read -r file; do
     echo "FAIL LFS attr: $file -> $attr"
     fail=1
   fi
-done < <(find models -type f \( -name '*.pth' -o -name '*.ckpt' -o -name '*.safetensors' \) -print)
+done < <(
+  find models -type f \( -name '*.pth' -o -name '*.ckpt' -o -name '*.safetensors' \) -print
+  find samples/public -maxdepth 1 -type f -name '*.wav' -print
+)
 
 echo
 echo "== Manifests and profiles =="
 python3 scripts/verify_manifest.py || fail=1
 python3 scripts/verify_profile.py profiles/stable.json || fail=1
 python3 scripts/verify_profile.py profiles/signature-preview.json || fail=1
+python3 scripts/verify_public_sample.py || fail=1
 
 echo
 echo "== Checksums =="

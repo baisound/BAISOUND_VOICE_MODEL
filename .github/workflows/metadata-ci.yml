@@ -42,14 +42,26 @@ jobs:
           test -f THIRD_PARTY_NOTICES.md
           test -f docs/BEGINNER_GUIDE_JP.md
           test -f docs/DEVELOPER_GUIDE_JP.md
+          test -f docs/USAGE_POLICY_JP.md
+          test -f examples/windows/README_JP.md
+          test -f examples/windows/BAISOUND-API-SETTINGS.example.ps1
+          test -f examples/windows/Start-BAISoundApi.ps1
+          test -f examples/windows/Invoke-BAISoundTts.ps1
+          test -f samples/README.md
+          test -f samples/public/baisound-narration-sample-v2.wav
+          test -f samples/public/baisound-narration-sample-v2.json
           test -f profiles/stable.json
           test -f manifests/model-registry.json
           test -f manifests/releases/v2.0.0.json
           test -f checksums/SHA256SUMS.txt
           grep -q '^\*\.pth .*filter=lfs' .gitattributes
           grep -q '^\*\.ckpt .*filter=lfs' .gitattributes
+          grep -q '^samples/public/\*\.wav .*filter=lfs' .gitattributes
           grep -q 'docs/BEGINNER_GUIDE_JP.md' README.md
           grep -q 'docs/DEVELOPER_GUIDE_JP.md' README.md
+          grep -q 'docs/USAGE_POLICY_JP.md' README.md
+          grep -q 'examples/windows/README_JP.md' README.md
+          git check-ignore -q --no-index examples/windows/BAISOUND-API-SETTINGS.local.ps1
 
       - name: Check public model paths
         shell: bash
@@ -69,10 +81,52 @@ jobs:
             }
           done < <(find models -type f \( -name '*.pth' -o -name '*.ckpt' -o -name '*.safetensors' \))
 
+          grep -q '^version https://git-lfs.github.com/spec/v1$' \
+            samples/public/baisound-narration-sample-v2.wav || {
+              echo "Public sample is not an LFS pointer."
+              exit 1
+            }
+
+          python3 scripts/verify_public_sample.py
+
+      - name: Parse Windows PowerShell examples
+        shell: pwsh
+        run: |
+          $failed = $false
+          foreach ($path in @(
+            "examples/windows/BAISOUND-API-SETTINGS.example.ps1",
+            "examples/windows/Start-BAISoundApi.ps1",
+            "examples/windows/Invoke-BAISoundTts.ps1"
+          )) {
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile(
+              $path,
+              [ref]$tokens,
+              [ref]$errors
+            ) | Out-Null
+            if ($errors.Count -gt 0) {
+              $errors | ForEach-Object { Write-Error "${path}: $($_.Message)" }
+              $failed = $true
+            }
+          }
+          if ($failed) { exit 1 }
+
       - name: Reject private or runtime artifacts
         shell: bash
         run: |
-          if find . -path './.git' -prune -o -type f \( -name '*.wav' -o -name '*.flac' -o -name '*.mp3' -o -name '*.m4a' -o -name '*.pem' -o -name '*.key' \) -print | grep -q .; then
-            echo "Private audio or credential material must not be committed."
+          approved='./samples/public/baisound-narration-sample-v2.wav'
+          unexpected="$({
+            find . -path './.git' -prune -o -type f \
+              \( -name '*.wav' -o -name '*.flac' -o -name '*.mp3' -o -name '*.m4a' \) \
+              -print | grep -Fvx "$approved" || true
+          })"
+          if [ -n "$unexpected" ]; then
+            echo "Unapproved audio material must not be committed."
+            printf '%s\n' "$unexpected"
+            exit 1
+          fi
+          if find . -path './.git' -prune -o -type f \( -name '*.pem' -o -name '*.key' \) -print | grep -q .; then
+            echo "Credential material must not be committed."
             exit 1
           fi

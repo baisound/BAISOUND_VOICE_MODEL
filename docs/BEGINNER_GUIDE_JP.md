@@ -21,6 +21,8 @@ BAISOUND Voice Modelは、読み上げアプリそのものではありません
 
 ## 一番わかりやすい使い方
 
+Windowsで公式APIをローカル起動する場合は、設定テンプレートとクライアントを含む[Windows向け起動例](../examples/windows/README_JP.md)も利用できます。
+
 ### 1. 利用条件を確認する
 
 最初に[MODEL_LICENSE.md](../MODEL_LICENSE.md)を読み、予定している利用が許可されているか確認します。公開リポジトリからダウンロードできることは、自由利用や再配布の許可を意味しません。
@@ -130,4 +132,7 @@ Stable版は`.ckpt`と`.pth`の2つを1組として扱います。`profiles/stab
 - 対応Runtime：[互換性](COMPATIBILITY.md)
 - よくある問題：[トラブルシューティング](TROUBLESHOOTING.md)
 - APIや自作アプリ連携：[開発者向け統合ガイド](DEVELOPER_GUIDE_JP.md)
+- Windows起動例：[Windows向けAPIクライアント](../examples/windows/README_JP.md)
+- 利用条件と悪用禁止：[利用・悪用防止ガイドライン](USAGE_POLICY_JP.md)
+- 公開ナレーション音声：[Public audio samples](../samples/README.md)
 - モデルの性質と制約：[Model Card](../MODEL_CARD.md)

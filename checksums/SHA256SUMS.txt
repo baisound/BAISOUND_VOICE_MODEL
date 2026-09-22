@@ -8,3 +8,4 @@ cc040cea1c5765620f464388d75809047f7f29087fff639c8f423b448447ad5d  models/candida
 aa2377f760971e4aeaead7d5319693a8ea8725b6e3121273d1a546ac7f30e669  models/candidates/v1/gpt/baisound-voice-v1-gpt-epoch05.ckpt
 16943e46220179da1de4c1df0b71eb82729c04d54c9594065405d6b6c1259998  models/candidates/v1/gpt/baisound-voice-v1-gpt-epoch10.ckpt
 a421ba90c243b9c1745526310ec52da47b4c08ccab4ba7abb9a5a7fb807759aa  models/candidates/v1/gpt/baisound-voice-v1-gpt-epoch15.ckpt
+634c08ceeb8720414b0d3eb5e175964d76140f81f93a261c6920bef1a4d20b18  samples/public/baisound-narration-sample-v2.wav

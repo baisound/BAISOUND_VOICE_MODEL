@@ -26,9 +26,11 @@ Stable版は、文章の読み方や流れを組み立てるGPTモデル（`.ckp
 
 - **初めて音声AIモデルを使う方**：[初心者向け利用ガイド](docs/BEGINNER_GUIDE_JP.md)
 - **組み込み・API連携を行う開発者**：[開発者向け統合ガイド](docs/DEVELOPER_GUIDE_JP.md)
+- **WindowsでローカルAPIを起動したい方**：[Windows起動例・APIクライアント](examples/windows/README_JP.md)
 - **モデルをすぐ取得したい方**：[クイックスタート](docs/QUICK_START_JP.md)
 - **詳しい導入条件を確認したい方**：[インストール](docs/INSTALL_JP.md) / [互換性](docs/COMPATIBILITY.md)
 - **モデルの用途・制約を確認したい方**：[Model Card](MODEL_CARD.md)
+- **利用条件・悪用時の対応を確認したい方**：[利用・悪用防止ガイドライン](docs/USAGE_POLICY_JP.md)
 
 ## ほかのソフトとの組み合わせ方
 
@@ -47,6 +49,9 @@ Stable版は、文章の読み方や流れを組み立てるGPTモデル（`.ckp
 > [!IMPORTANT]
 > リポジトリを閲覧・cloneできることと、モデルを利用・再配布・製品搭載できることは別です。作業前に[LICENSE.md](LICENSE.md)、[MODEL_LICENSE.md](MODEL_LICENSE.md)、[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)を確認してください。
 
+> [!WARNING]
+> 許諾済みの利用であっても、YouTube動画で本モデルまたは生成音声を使う場合は、動画ごとの概要欄へ指定クレジットを必ず記載してください。なりすまし、詐欺、名誉毀損、権利侵害などの悪用は禁止です。詳細は[利用・悪用防止ガイドライン](docs/USAGE_POLICY_JP.md)を参照してください。
+
 ## Latest stable release
 
 Stable release: **v2.0.0**
@@ -57,6 +62,18 @@ Stable release: **v2.0.0**
 | GPT | `models/stable/v2/baisound-voice-v2-gpt.ckpt` | 155,312,966 | `4dd990db49d56bdaff6c4988635c46b58f73e1d719297570f0d361184fd60745` |
 
 Engine compatibility: **GPT-SoVITS v2Pro**. The upstream source tree and pretrained dependencies are not vendored here.
+
+## 公開サンプル
+
+[通常ナレーションのWAVをダウンロード](samples/public/baisound-narration-sample-v2.wav)
+
+> 朝の光が静かな街をやさしく照らします。今日も新しい物語がここから始まります。
+
+- Stable v2.0.0 / PCM 16-bit / 32,000 Hz / mono / 6.04秒
+- SHA-256：`634c08ceeb8720414b0d3eb5e175964d76140f81f93a261c6920bef1a4d20b18`
+- [生成情報と公開許諾の記録](samples/public/baisound-narration-sample-v2.json)
+
+この音声は、BAISOUND Ownerが公開デモとして明示的に承認した生成音声です。参照音声や学習音声は含みません。サンプルの公開は、モデルや声の自由利用・再配布を許可するものではありません。
 
 ## モデルを取得する
 
@@ -85,6 +102,7 @@ Machine-readable entry points:
 - `manifests/model-registry.json`
 - `manifests/releases/v2.0.0.json`
 - `checksums/SHA256SUMS.txt`
+- `samples/public/baisound-narration-sample-v2.json`
 
 ## Experimental profile
 
@@ -110,11 +128,11 @@ They were renamed in Git history with `git mv`; their bytes and LFS object ident
 
 This repository contains approved public model weights, public-safe manifests, profiles, checksums, and helper scripts. It intentionally excludes:
 
-- raw or reference voice audio;
+- raw or reference voice audio（Owner承認済みの公開生成サンプルを除く）;
 - private training, validation, and test data;
 - private transcripts and blind-review mappings;
 - GPT-SoVITS source code and pretrained dependencies;
-- Conda/Python environments, caches, logs, and generated WAV files;
+- Conda/Python environments, caches, logs, and未承認のgenerated WAV files;
 - TTS server, queue, playback, and product integration code.
 
 ## Git LFS
@@ -130,3 +148,10 @@ git lfs ls-files
 ## Licensing
 
 Repository content and model weights are not automatically granted an open-source or public-redistribution license. Read [LICENSE.md](LICENSE.md), [MODEL_LICENSE.md](MODEL_LICENSE.md), and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before use or redistribution.
+
+Authorized use is also subject to the [利用・悪用防止ガイドライン](docs/USAGE_POLICY_JP.md). YouTube利用時の必須表記は次のとおりです。
+
+```text
+AI音声: BAISOUND Voice Model v2.0.0
+配布元: https://github.com/baisound/BAISOUND_VOICE_MODEL
+```
