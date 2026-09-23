@@ -3,7 +3,7 @@
 ## Model details
 
 - Model ID: `baisound-voice`
-- Stable release: `2.0.0`
+- Stable release: `2.0.1`（モデル重みは`2.0.0`と同一）
 - Architecture family: GPT-SoVITS
 - Engine line: v2Pro
 - Stable components: one SoVITS checkpoint and one GPT checkpoint

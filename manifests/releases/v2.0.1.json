@@ -1,0 +1,34 @@
+{
+  "schema": "baisound.voice-model.release.v1",
+  "model_id": "baisound-voice",
+  "release_version": "2.0.1",
+  "released_at": "2026-09-24",
+  "channel": "stable",
+  "engine": "GPT-SoVITS",
+  "engine_family": "v2Pro",
+  "model_weights_unchanged_from": "2.0.0",
+  "models": {
+    "sovits": {
+      "path": "models/stable/v2/baisound-voice-v2-sovits.pth",
+      "bytes": 134946675,
+      "sha256": "76a492931f97cd349c6d7d6f04bab4f2442fa9890a5a40708a1d49f919f8e0ff",
+      "source_artifact_name": "BAISOUND_TASK097_V2_FRESH_e4_s192.pth"
+    },
+    "gpt": {
+      "path": "models/stable/v2/baisound-voice-v2-gpt.ckpt",
+      "bytes": 155312966,
+      "sha256": "4dd990db49d56bdaff6c4988635c46b58f73e1d719297570f0d361184fd60745",
+      "source_artifact_name": "BAISOUND_TASK097_V2_FRESH-e15.ckpt"
+    }
+  },
+  "release_changes": [
+    "Windows API client smoke test on windows-latest",
+    "Windows launcher, API client, and settings documentation",
+    "Public narration sample and usage-policy documentation"
+  ],
+  "license_status": "SEE_MODEL_LICENSE",
+  "related_profiles": [
+    "profiles/stable.json",
+    "profiles/signature-preview.json"
+  ]
+}

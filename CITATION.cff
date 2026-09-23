@@ -4,7 +4,7 @@ title: "BAISOUND Voice Model"
 type: software
 authors:
   - name: "BAISOUND"
-version: "2.0.0"
-date-released: "2026-09-22"
+version: "2.0.1"
+date-released: "2026-09-24"
 license: "LicenseRef-Proprietary"
 repository-code: "https://github.com/baisound/BAISOUND_VOICE_MODEL"

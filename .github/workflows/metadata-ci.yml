@@ -55,6 +55,7 @@ jobs:
           test -f profiles/stable.json
           test -f manifests/model-registry.json
           test -f manifests/releases/v2.0.0.json
+          test -f manifests/releases/v2.0.1.json
           test -f checksums/SHA256SUMS.txt
           grep -q '^\*\.pth .*filter=lfs' .gitattributes
           grep -q '^\*\.ckpt .*filter=lfs' .gitattributes
@@ -90,6 +91,7 @@ jobs:
             }
 
           python3 scripts/verify_public_sample.py
+          python3 scripts/verify_release.py manifests/releases/v2.0.1.json
 
       - name: Parse Windows PowerShell examples
         shell: pwsh

@@ -25,7 +25,7 @@ Client / Editor / Stream Deck / Game
 | 項目 | 値 |
 |---|---|
 | Model ID | `baisound-voice` |
-| Stable release | `2.0.0` |
+| Stable release | `2.0.1`（重みは`2.0.0`と同一） |
 | Engine | GPT-SoVITS |
 | Engine line | `v2Pro` |
 | Recorded upstream commit | `48b1a0169a28582a8984402f82cf438d3bfa6aca` |
@@ -204,7 +204,7 @@ Stable統合では`profiles/stable.json`を正本にします。`profiles/signat
 - [Versioning](VERSIONING.md)
 - [Troubleshooting](TROUBLESHOOTING.md)
 - [Model Card](../MODEL_CARD.md)
-- [Release manifest](../manifests/releases/v2.0.0.json)
+- [Release manifest](../manifests/releases/v2.0.1.json)
 - [GPT-SoVITS公式リポジトリ](https://github.com/RVC-Boss/GPT-SoVITS)
 - [GPT-SoVITS公式`api_v2.py`](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/api_v2.py)
 - [Windows向け起動例・APIクライアント](../examples/windows/README_JP.md)
