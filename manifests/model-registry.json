@@ -1,6 +1,6 @@
 {
   "schema": "baisound.voice-model.registry.v1",
-  "generated_at_utc": "2026-09-22T00:00:00Z",
+  "generated_at_utc": "2026-09-24T00:00:00Z",
   "model_id": "baisound-voice",
   "engine": "GPT-SoVITS",
   "engine_family": "v2Pro",
@@ -8,7 +8,7 @@
     {
       "status": "STABLE",
       "family": "sovits",
-      "release_version": "2.0.0",
+      "release_version": "2.0.1",
       "public_filename": "baisound-voice-v2-sovits.pth",
       "path": "models/stable/v2/baisound-voice-v2-sovits.pth",
       "bytes": 134946675,
@@ -18,7 +18,7 @@
     {
       "status": "STABLE",
       "family": "gpt",
-      "release_version": "2.0.0",
+      "release_version": "2.0.1",
       "public_filename": "baisound-voice-v2-gpt.ckpt",
       "path": "models/stable/v2/baisound-voice-v2-gpt.ckpt",
       "bytes": 155312966,

@@ -1,6 +1,6 @@
 # BAISOUND Voice Model 利用・悪用防止ガイドライン
 
-最終更新日：2026-09-22
+最終更新日：2026-09-24
 
 ## 1. 適用範囲
 
@@ -12,8 +12,10 @@
 
 本モデルまたは本モデルで生成した音声をYouTube動画で使用する場合、**対象となるすべての動画の概要欄**へ、次の2行を省略せず、視聴者が確認できる状態で記載してください。
 
+版番号は実際に利用したリリース番号を記載してください。現行Stable版の記載例は次のとおりです。
+
 ```text
-AI音声: BAISOUND Voice Model v2.0.0
+AI音声: BAISOUND Voice Model v2.0.1
 配布元: https://github.com/baisound/BAISOUND_VOICE_MODEL
 ```
 

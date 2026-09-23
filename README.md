@@ -54,7 +54,9 @@ Stable版は、文章の読み方や流れを組み立てるGPTモデル（`.ckp
 
 ## Latest stable release
 
-Stable release: **v2.0.0**
+Stable release: **v2.0.1**
+
+`v2.0.1`はWindows APIクライアントの自動検証と公開ドキュメントを強化したパッチリリースです。GPT/SoVITSモデルの重み、ファイル名、サイズ、SHA-256は`v2.0.0`から変更していません。
 
 | Component | File | Bytes | SHA-256 |
 |---|---|---:|---|
@@ -100,7 +102,7 @@ Machine-readable entry points:
 
 - `profiles/stable.json`
 - `manifests/model-registry.json`
-- `manifests/releases/v2.0.0.json`
+- `manifests/releases/v2.0.1.json`
 - `checksums/SHA256SUMS.txt`
 - `samples/public/baisound-narration-sample-v2.json`
 
@@ -152,6 +154,6 @@ Repository content and model weights are not automatically granted an open-sourc
 Authorized use is also subject to the [利用・悪用防止ガイドライン](docs/USAGE_POLICY_JP.md). YouTube利用時の必須表記は次のとおりです。
 
 ```text
-AI音声: BAISOUND Voice Model v2.0.0
+AI音声: BAISOUND Voice Model v2.0.1
 配布元: https://github.com/baisound/BAISOUND_VOICE_MODEL
 ```

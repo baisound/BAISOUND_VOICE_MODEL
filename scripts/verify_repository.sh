@@ -101,6 +101,7 @@ python3 scripts/verify_manifest.py || fail=1
 python3 scripts/verify_profile.py profiles/stable.json || fail=1
 python3 scripts/verify_profile.py profiles/signature-preview.json || fail=1
 python3 scripts/verify_public_sample.py || fail=1
+python3 scripts/verify_release.py manifests/releases/v2.0.1.json || fail=1
 
 echo
 echo "== Checksums =="

@@ -4,6 +4,8 @@ All notable BAISOUND Voice Model repository changes are recorded here.
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-09-24
+
 ### Documentation
 
 - expanded the README with a product overview and software-integration map;
@@ -11,10 +13,16 @@ All notable BAISOUND Voice Model repository changes are recorded here.
 - documented GPT-SoVITS WebUI, local API, video, streaming, Stream Deck, and game integration boundaries.
 - added a Windows v2Pro API launcher, PowerShell API client, and local settings template;
 - added mandatory YouTube credit and prohibited-misuse guidance, including civil and criminal enforcement policy.
+- documented the automated Windows API client validation boundary.
 
 ### Added
 
 - added an owner-approved Stable v2.0.0 narration sample with public-safe metadata and checksum.
+- added a Windows CI smoke test for model switching, UTF-8 Japanese requests, reference inputs, and WAV output validation.
+
+### Compatibility
+
+- kept the Stable GPT and SoVITS model binaries, filenames, sizes, and SHA-256 values unchanged from v2.0.0.
 
 ## [2.0.0] - 2026-09-22
 

@@ -2,7 +2,7 @@
   "schema": "baisound.voice-model.profile.v1",
   "model_id": "baisound-voice",
   "channel": "stable",
-  "release_version": "2.0.0",
+  "release_version": "2.0.1",
   "engine": "GPT-SoVITS",
   "engine_family": "v2Pro",
   "models": {
