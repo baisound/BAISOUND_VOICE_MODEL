@@ -47,6 +47,8 @@ jobs:
           test -f examples/windows/BAISOUND-API-SETTINGS.example.ps1
           test -f examples/windows/Start-BAISoundApi.ps1
           test -f examples/windows/Invoke-BAISoundTts.ps1
+          test -f tests/windows/Invoke-BAISoundTts.Smoke.ps1
+          test -f tests/windows/mock_gptsovits_api.py
           test -f samples/README.md
           test -f samples/public/baisound-narration-sample-v2.wav
           test -f samples/public/baisound-narration-sample-v2.json
@@ -96,7 +98,8 @@ jobs:
           foreach ($path in @(
             "examples/windows/BAISOUND-API-SETTINGS.example.ps1",
             "examples/windows/Start-BAISoundApi.ps1",
-            "examples/windows/Invoke-BAISoundTts.ps1"
+            "examples/windows/Invoke-BAISoundTts.ps1",
+            "tests/windows/Invoke-BAISoundTts.Smoke.ps1"
           )) {
             $tokens = $null
             $errors = $null
@@ -130,3 +133,16 @@ jobs:
             echo "Credential material must not be committed."
             exit 1
           fi
+
+  windows-client-smoke:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout without downloading LFS binaries
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+
+      - name: Exercise Windows API client against a local mock
+        shell: pwsh
+        run: ./tests/windows/Invoke-BAISoundTts.Smoke.ps1
